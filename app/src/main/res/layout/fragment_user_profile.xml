@@ -1,0 +1,236 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+<FrameLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".fragments.UserProfileFragment">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:background="@color/dark_green"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/userNameDataTxt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="-"
+            android:textColor="#FFFFFF"
+            android:textSize="25dp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/constraintLayout2"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="130dp"
+            android:background="@drawable/title"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/sexDataTxt">
+
+            <TextView
+                android:id="@+id/tvUserCountry"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="24dp"
+                android:layout_marginTop="24dp"
+                android:text="Kraj:"
+                android:textColor="@color/smoked_green"
+                android:textSize="20dp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/linearLayout2" />
+
+            <TextView
+                android:id="@+id/tvUserCity"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="24dp"
+                android:layout_marginTop="16dp"
+                android:text="Miasto:"
+                android:textColor="@color/smoked_green"
+                android:textSize="20dp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tvUserCountry" />
+
+            <TextView
+                android:id="@+id/tvUserStreet"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="24dp"
+                android:layout_marginTop="16dp"
+                android:text="Ulica: "
+                android:textColor="@color/smoked_green"
+                android:textSize="20dp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tvUserCity" />
+
+            <TextView
+                android:id="@+id/tvCountryData"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:text="-"
+                android:textColor="#000000"
+                android:textSize="20dp"
+                app:layout_constraintBottom_toBottomOf="@+id/tvUserCountry"
+                app:layout_constraintStart_toEndOf="@+id/tvUserCountry"
+                app:layout_constraintTop_toTopOf="@+id/tvUserCountry" />
+
+            <TextView
+                android:id="@+id/tvCityData"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:text="-"
+                android:textColor="#000000"
+                android:textSize="20dp"
+                app:layout_constraintBottom_toBottomOf="@+id/tvUserCity"
+                app:layout_constraintStart_toEndOf="@+id/tvUserCity"
+                app:layout_constraintTop_toTopOf="@+id/tvUserCity" />
+
+            <TextView
+                android:id="@+id/tvStreetData"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:text="-"
+                android:textColor="#000000"
+                android:textSize="20dp"
+                app:layout_constraintBottom_toBottomOf="@+id/tvUserStreet"
+                app:layout_constraintStart_toEndOf="@+id/tvUserStreet"
+                app:layout_constraintTop_toTopOf="@+id/tvUserStreet" />
+
+            <Button
+                android:id="@+id/editProfileBtn"
+                android:layout_width="384dp"
+                android:layout_height="64dp"
+                android:layout_marginBottom="16dp"
+                android:background="@drawable/circle_button"
+                android:text="Edytuj profil"
+                android:textColor="@color/smoked_white"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <LinearLayout
+                android:id="@+id/linearLayout2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="32dp"
+                android:orientation="horizontal"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <ImageView
+                    android:id="@+id/imageView"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    app:srcCompat="@drawable/earth_globe" />
+
+                <TextView
+                    android:id="@+id/userLocationTxt"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="8dp"
+                    android:text="Lokalizacja"
+                    android:textColor="@color/gold"
+                    android:textSize="28dp"
+                    android:textStyle="bold" />
+
+            </LinearLayout>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <TextView
+            android:id="@+id/userAgeView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="44dp"
+            android:layout_marginTop="16dp"
+            android:text="Wiek"
+            android:textColor="#FFBA00"
+            android:textSize="15dp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/userNameDataTxt" />
+
+        <TextView
+            android:id="@+id/userSexView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="Płeć"
+            android:textColor="#FFBA00"
+            android:textSize="15dp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toStartOf="@+id/tvUserEmail"
+            app:layout_constraintStart_toEndOf="@+id/userAgeView"
+            app:layout_constraintTop_toBottomOf="@+id/userNameDataTxt" />
+
+        <TextView
+            android:id="@+id/tvUserEmail"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="44dp"
+            android:text="E-mail"
+            android:textColor="#FFBA00"
+            android:textSize="15dp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/userNameDataTxt" />
+
+        <TextView
+            android:id="@+id/ageDataTxt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="2dp"
+            android:text="-"
+            android:textColor="#FFFF"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="@+id/userAgeView"
+            app:layout_constraintHorizontal_bias="0.608"
+            app:layout_constraintStart_toStartOf="@+id/userAgeView"
+            app:layout_constraintTop_toBottomOf="@+id/userAgeView" />
+
+        <TextView
+            android:id="@+id/sexDataTxt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="-"
+            android:textColor="#FFFF"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="@+id/userSexView"
+            app:layout_constraintStart_toStartOf="@+id/userSexView"
+            app:layout_constraintTop_toBottomOf="@+id/userSexView" />
+
+        <TextView
+            android:id="@+id/tvUserEmailData"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="-"
+            android:textColor="#FFFF"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="@+id/tvUserEmail"
+            app:layout_constraintStart_toStartOf="@+id/tvUserEmail"
+            app:layout_constraintTop_toBottomOf="@+id/tvUserEmail" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</FrameLayout>
+</layout>

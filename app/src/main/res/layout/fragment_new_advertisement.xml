@@ -1,0 +1,311 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <androidx.constraintlayout.motion.widget.MotionLayout
+        android:id="@+id/constraintLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/dark_green"
+        app:layoutDescription="@xml/fragment_new_advertisement_xml_constraintlayout_scene">
+
+        <ImageView
+            android:id="@+id/imageBackgroud"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:scaleType="centerCrop"
+            app:layout_constraintBottom_toBottomOf="@+id/imageLayout"
+            app:layout_constraintLeft_toLeftOf="@+id/imageLayout"
+            app:layout_constraintRight_toRightOf="@+id/imageLayout"
+            app:layout_constraintTop_toTopOf="@+id/imageLayout" />
+
+        <ImageView
+            android:id="@+id/planet"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_margin="10dp"
+            app:layout_constraintRight_toRightOf="@+id/imageLayout"
+            app:layout_constraintTop_toTopOf="@+id/imageLayout"
+
+            android:src="@drawable/worldwide"
+            />
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/image"
+            android:layout_marginTop="20dp"
+            android:layout_width="170dp"
+            android:layout_height="170dp"
+            android:src="@drawable/twoj_pies"
+            app:civ_border_width="1dp"
+            app:layout_constraintLeft_toLeftOf="@id/imageBackgroud"
+            app:layout_constraintRight_toRightOf="@id/imageBackgroud"
+            app:layout_constraintTop_toTopOf="@id/imageBackgroud"
+            app:civ_border_color="@color/smoked_green"/>
+
+
+        <Button
+            android:id="@+id/takePhotoButton"
+            android:layout_width="120dp"
+            android:layout_height="50dp"
+            android:background="@drawable/circle_button"
+            android:padding="2dp"
+            android:text="Zrób zdjęcie"
+            android:textColor="@color/dark_green"
+            app:layout_constraintBottom_toBottomOf="@id/imageBackgroud"
+            app:layout_constraintLeft_toLeftOf="@id/imageBackgroud"
+            app:layout_constraintRight_toLeftOf="@+id/fromDiskButton"
+            app:layout_constraintTop_toBottomOf="@+id/image" />
+
+        <Button
+            android:id="@+id/fromDiskButton"
+            android:layout_width="120dp"
+            android:layout_height="50dp"
+            android:background="@drawable/circle_button"
+            android:text="Z dysku"
+            android:textColor="@color/dark_green"
+            app:layout_constraintBottom_toBottomOf="@id/imageBackgroud"
+            app:layout_constraintLeft_toRightOf="@id/takePhotoButton"
+            app:layout_constraintRight_toRightOf="@id/imageBackgroud"
+            app:layout_constraintTop_toBottomOf="@+id/image" />
+
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/imageLayout"
+            android:layout_width="match_parent"
+            android:layout_height="270dp"
+            android:gravity="center"
+            app:layout_constraintBottom_toTopOf="@+id/content"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@id/content"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:background="@drawable/title"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/imageLayout">
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <FrameLayout
+            android:id="@+id/strip"
+            android:layout_width="80dp"
+            android:layout_height="3dp"
+            android:layout_marginTop="20dp"
+            android:background="@color/smoked_green"
+            app:layout_constraintLeft_toLeftOf="@+id/content"
+            app:layout_constraintRight_toRightOf="@+id/content"
+            app:layout_constraintTop_toTopOf="@+id/content" />
+
+        <EditText
+            android:id="@+id/nameEditText"
+            android:hint="Jak się wabi?"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="60dp"
+            android:layout_marginTop="20dp"
+            android:alpha="1"
+            android:background="@drawable/custom_edittext"
+            android:drawableStart="@drawable/custom_icon_for_edittext"
+            android:drawablePadding="12dp"
+            android:padding="6dp"
+            android:textColor="@color/dark_green"
+            android:textStyle="bold"
+            android:textCursorDrawable="@drawable/cursor_color"
+            android:textSize="14sp"
+            android:textColorHint="@color/smoked_green"
+            app:layout_constraintLeft_toLeftOf="@+id/content"
+            app:layout_constraintRight_toRightOf="@+id/content"
+            app:layout_constraintTop_toBottomOf="@+id/strip" />
+
+
+        <LinearLayout
+            android:id="@+id/healthFrame"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintLeft_toLeftOf="@+id/content"
+            app:layout_constraintRight_toRightOf="@+id/content"
+            app:layout_constraintTop_toBottomOf="@id/nameEditText" >
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginLeft="60dp">
+                <TextView
+                    android:id="@+id/healthText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:textSize="14sp"
+                    android:layout_gravity="center"
+                    android:textColor="@color/smoked_green"
+                    android:textStyle="bold"
+                    android:text="Zdrowie"/>
+                <RatingBar
+                    android:id="@+id/healthRatingBar"
+                    style="@style/customRatingBarStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:numStars="5"
+                    android:rating="5"
+                    android:layout_marginTop="10dp"
+                    android:paddingVertical="10dp"
+                    />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="50dp"
+                >
+                <TextView
+                    android:id="@+id/ageText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:textSize="14sp"
+                    android:layout_gravity="center"
+                    android:textColor="@color/smoked_green"
+                    android:textStyle="bold"
+                    android:text="Wiek"/>
+                <com.shawnlin.numberpicker.NumberPicker
+                    android:id="@+id/agePicker"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:np_orientation="horizontal"
+                    app:np_textSize="13sp"
+                    app:np_selectedTextSize="17sp"
+                    app:np_dividerColor="@color/dark_green"
+                    app:np_dividerLength="35sp"
+                    app:np_dividerDistance="35sp"
+                   />
+            </LinearLayout>
+        </LinearLayout>
+
+        <Spinner
+            android:id="@+id/characterSpinner"
+            style="@style/customSpinnerRatingBarStyle"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:paddingHorizontal="20dp"
+            android:textAlignment="center"
+            android:gravity="center"
+            android:textSize="14sp"
+            android:spinnerMode="dialog"
+            app:layout_constraintLeft_toLeftOf="@+id/content"
+            app:layout_constraintRight_toRightOf="@+id/content"
+            app:layout_constraintTop_toBottomOf="@id/healthFrame" />
+
+        <Spinner
+            android:id="@+id/behaviorSpinner"
+            style="@style/customSpinnerRatingBarStyle"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:paddingHorizontal="30dp"
+            android:textAlignment="center"
+            android:gravity="center"
+            android:textSize="14sp"
+            android:spinnerMode="dialog"
+            app:layout_constraintLeft_toLeftOf="@+id/content"
+            app:layout_constraintRight_toRightOf="@+id/content"
+            app:layout_constraintTop_toBottomOf="@+id/characterSpinner" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/dropdown_list"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="60dp"
+            android:layout_marginVertical="10dp"
+            app:boxBackgroundColor="@android:color/white"
+            android:hint="Wybierz zwierzę"
+            app:hintTextColor="@color/smoked_green"
+            app:boxStrokeColor="@color/dark_green"
+            app:endIconTint="@color/dark_green"
+            app:layout_constraintLeft_toLeftOf="@+id/content"
+            app:layout_constraintRight_toRightOf="@+id/content"
+            app:layout_constraintTop_toBottomOf="@id/behaviorSpinner"
+            style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.ExposedDropdownMenu">
+
+        <AutoCompleteTextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="none"
+            />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <EditText
+        android:id="@+id/descriptionEditText"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginHorizontal="60dp"
+        android:alpha="0"
+        android:autofillHints=""
+        android:background="@drawable/custom_edittext"
+        android:drawableStart="@drawable/custom_icon_for_edittext"
+        android:drawablePadding="12dp"
+        android:gravity="top"
+        android:hint="Opis..."
+        android:inputType="text"
+        android:padding="6dp"
+        android:textColorHint="@color/smoked_green"
+        android:textCursorDrawable="@drawable/cursor_color"
+        android:textSize="14sp"
+        android:textStyle="bold"
+        app:layout_constraintLeft_toLeftOf="@+id/content"
+        app:layout_constraintRight_toRightOf="@+id/content"
+        app:layout_constraintTop_toBottomOf="@id/dropdown_list" />
+
+        <EditText
+            android:id="@+id/szczepieniaEditText"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginHorizontal="50dp"
+            android:layout_marginTop="10dp"
+            android:alpha="0"
+            android:background="@drawable/custom_edittext"
+            android:drawableStart="@drawable/custom_icon_for_edittext"
+            android:drawablePadding="12dp"
+            android:gravity="top"
+            android:textColorHint="@color/smoked_green"
+            android:textStyle="bold"
+            android:hint="Szczepienia..."
+            android:inputType="text"
+            android:padding="6dp"
+            android:textCursorDrawable="@drawable/cursor_color"
+            android:textSize="14sp"
+            app:layout_constraintLeft_toLeftOf="@+id/content"
+            app:layout_constraintRight_toRightOf="@+id/content"
+            app:layout_constraintTop_toBottomOf="@+id/descriptionEditText" />
+
+        <ImageButton
+            android:id="@+id/addAdvertisementButton"
+            android:layout_width="1dp"
+            android:layout_height="1dp"
+            android:alpha="0"
+            android:background="@drawable/green_circle_button"
+            android:contentDescription="TODO"
+            android:gravity="center"
+            android:src="@drawable/ic_arrow_right"
+            android:textColor="@android:color/white"
+            app:layout_constraintLeft_toLeftOf="@+id/content"
+            app:layout_constraintRight_toRightOf="@+id/content"
+            app:layout_constraintTop_toBottomOf="@id/szczepieniaEditText" />
+
+
+    </androidx.constraintlayout.motion.widget.MotionLayout>
+</layout>

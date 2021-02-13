@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="utf-8"?>
+<MotionScene 
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:motion="http://schemas.android.com/apk/res-auto">
+
+    <Transition
+        motion:constraintSetEnd="@+id/end"
+        motion:constraintSetStart="@id/start"
+        motion:duration="1000">
+       <KeyFrameSet>
+       </KeyFrameSet>
+        <OnSwipe motion:dragDirection="dragUp"
+            motion:onTouchUp="autoComplete"
+                    />
+    </Transition>
+
+    <ConstraintSet android:id="@+id/start">
+
+        <Constraint
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            motion:layout_constraintTop_toBottomOf="@id/healthFrame"
+            motion:layout_constraintLeft_toLeftOf="@+id/content"
+            motion:layout_constraintRight_toRightOf="@+id/content"
+            android:layout_marginTop="20dp"
+            android:id="@+id/characterSpinner" />
+        <Constraint
+            android:id="@+id/addAdvertisementButton"
+            android:layout_width="1dp"
+            android:layout_height="1dp"
+            motion:layout_constraintTop_toBottomOf="@id/szczepieniaEditText"
+            android:alpha="0"
+            motion:layout_constraintLeft_toLeftOf="@+id/content"
+            motion:layout_constraintRight_toRightOf="@+id/content" />
+        <Constraint
+            android:id="@+id/addAdvertisementButton"
+            android:layout_width="1dp"
+            android:layout_height="1dp"
+            motion:layout_constraintTop_toBottomOf="@id/szczepieniaEditText"
+            android:alpha="0"
+            motion:layout_constraintLeft_toLeftOf="@+id/content"
+            motion:layout_constraintRight_toRightOf="@+id/content" />
+        <Constraint
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            motion:layout_constraintTop_toBottomOf="@id/dropdown_list"
+            motion:layout_constraintRight_toRightOf="@+id/content"
+            android:alpha="0"
+            motion:layout_constraintLeft_toLeftOf="@+id/content"
+            android:id="@+id/descriptionEditText"
+            android:layout_marginStart="40dp"
+            android:layout_marginEnd="40dp" />
+        <Constraint
+            android:layout_height="270dp"
+            motion:layout_constraintTop_toTopOf="parent"
+            motion:layout_constraintBottom_toTopOf="@+id/content"
+            motion:layout_constraintHorizontal_bias="0.0"
+            motion:layout_constraintLeft_toLeftOf="parent"
+            motion:layout_constraintRight_toRightOf="parent"
+            android:layout_width="match_parent"
+            android:id="@+id/imageLayout" />
+
+
+    </ConstraintSet>
+
+    <ConstraintSet android:id="@+id/end">
+        <Constraint
+            android:id="@id/planet"
+            android:layout_height="0.00001dp"
+
+            />
+        <Constraint
+            android:layout_height="0.00001dp"
+            motion:layout_constraintLeft_toLeftOf="@id/imageBackgroud"
+            motion:layout_constraintRight_toRightOf="@id/imageBackgroud"
+            android:layout_width="wrap_content"
+            android:id="@+id/image" />
+        <Constraint
+            android:id="@+id/imageLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            motion:layout_constraintBottom_toTopOf="@+id/content"
+            motion:layout_constraintLeft_toLeftOf="parent"
+            motion:layout_constraintRight_toRightOf="parent"
+            motion:layout_constraintTop_toTopOf="parent"
+            android:layout_marginTop="0dp" />
+        <Constraint
+            android:id="@+id/imageBackgroud"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            motion:layout_constraintBottom_toBottomOf="@+id/imageLayout"
+            motion:layout_constraintLeft_toLeftOf="@+id/imageLayout"
+            motion:layout_constraintRight_toRightOf="@+id/imageLayout"
+            motion:layout_constraintTop_toTopOf="@+id/imageLayout" />
+        <Constraint
+            android:id="@+id/descriptionEditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            motion:layout_constraintTop_toBottomOf="@id/dropdown_list"
+            motion:layout_constraintRight_toRightOf="@+id/content"
+            android:alpha="1"
+            motion:layout_constraintLeft_toLeftOf="@+id/content"
+            android:layout_marginLeft="40dp"
+            android:layout_marginStart="60dp"
+            android:layout_marginRight="40dp"
+            android:layout_marginEnd="60dp"
+            android:layout_marginTop="30dp" />
+        <Constraint
+            android:id="@+id/szczepieniaEditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            motion:layout_constraintTop_toBottomOf="@+id/descriptionEditText"
+            motion:layout_constraintRight_toRightOf="@+id/content"
+            android:alpha="1"
+            motion:layout_constraintLeft_toLeftOf="@+id/content"
+            android:layout_marginTop="30dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginStart="60dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginEnd="60dp" />
+        <Constraint
+            android:id="@+id/addAdvertisementButton"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            motion:layout_constraintTop_toBottomOf="@id/szczepieniaEditText"
+            android:alpha="1"
+            motion:layout_constraintLeft_toLeftOf="@+id/content"
+            motion:layout_constraintRight_toRightOf="@+id/content"
+            android:layout_marginTop="15dp" />
+        <Constraint
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            motion:layout_constraintTop_toBottomOf="@+id/characterSpinner"
+            motion:layout_constraintLeft_toLeftOf="@+id/content"
+            motion:layout_constraintRight_toRightOf="@+id/content"
+            android:layout_marginTop="20dp"
+            android:id="@+id/behaviorSpinner" />
+        <Constraint
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            motion:layout_constraintTop_toBottomOf="@id/healthFrame"
+            motion:layout_constraintLeft_toLeftOf="@+id/content"
+            motion:layout_constraintRight_toRightOf="@+id/content"
+            android:layout_marginTop="20dp"
+            android:id="@+id/characterSpinner" />
+        <Constraint
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            motion:layout_constraintTop_toBottomOf="@+id/nameEditText"
+            motion:layout_constraintLeft_toLeftOf="@+id/content"
+            motion:layout_constraintRight_toRightOf="@+id/content"
+            android:layout_marginTop="10dp"
+            android:id="@+id/healthRatingBar" />
+        <Constraint
+            android:layout_width="120dp"
+            android:layout_height="wrap_content"
+            motion:layout_constraintBottom_toBottomOf="@id/imageBackgroud"
+            motion:layout_constraintTop_toBottomOf="@+id/image"
+            motion:layout_constraintLeft_toLeftOf="@id/imageBackgroud"
+            motion:layout_constraintRight_toLeftOf="@+id/fromDiskButton"
+            android:id="@+id/takePhotoButton"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="0dp" />
+        <Constraint
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            motion:layout_constraintBottom_toBottomOf="parent"
+            motion:layout_constraintTop_toBottomOf="@+id/imageLayout"
+            motion:layout_constraintLeft_toLeftOf="parent"
+            motion:layout_constraintRight_toRightOf="parent"
+            android:id="@+id/content"
+            android:layout_marginTop="10dp" />
+        <Constraint
+            motion:layout_constraintLeft_toRightOf="@id/takePhotoButton"
+            android:layout_width="120dp"
+            android:layout_height="wrap_content"
+            motion:layout_constraintBottom_toBottomOf="@id/imageBackgroud"
+            motion:layout_constraintTop_toBottomOf="@+id/image"
+            motion:layout_constraintRight_toRightOf="@id/imageBackgroud"
+            android:id="@+id/fromDiskButton"
+            android:layout_marginTop="10dp" />
+
+    </ConstraintSet>
+</MotionScene>

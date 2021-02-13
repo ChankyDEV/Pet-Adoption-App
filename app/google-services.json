@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "230474774111",
+    "firebase_url": "https://rokpsia.firebaseio.com",
+    "project_id": "rokpsia",
+    "storage_bucket": "rokpsia.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:230474774111:android:a8e167968dfad5e1684dea",
+        "android_client_info": {
+          "package_name": "com.example.rokpsia"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "230474774111-23e674e6v35q6vm8pqehmisqsh62jgbq.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAe4njPGkCt8fiprNFQ59qDpCAzmkpPOcE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "230474774111-23e674e6v35q6vm8pqehmisqsh62jgbq.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

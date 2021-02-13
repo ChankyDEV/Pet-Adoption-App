@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+
+<androidx.constraintlayout.widget.ConstraintLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".fragments.loginAndRegister.RegisterFragment">
+
+    <TextView
+        android:id="@+id/login"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="28dp"
+        android:text="REJESTRACJA"
+        android:textColor="#000000"
+        android:textSize="30dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/image2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="55dp"
+        android:src="@drawable/ic_two"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+    <TextView
+        android:alpha="0"
+        android:id="@+id/step"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toTopOf="@id/carouselView"
+        app:layout_constraintEnd_toEndOf="@id/carouselView"
+        android:layout_marginBottom="10dp"
+        android:textSize="18sp"
+        tools:text = "Etap 1 z 2"
+        android:textColor="@color/blackAndSomeGreen"
+        app:layout_constraintStart_toStartOf="@id/carouselView"/>
+
+    <com.synnapps.carouselview.CarouselView
+        app:autoPlay="false"
+        android:translationY="-20dp"
+        app:indicatorGravity="center_horizontal"
+        app:indicatorMarginVertical = "224dp"
+        app:layout_constraintTop_toBottomOf="@id/image2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginStart="5dp"
+        android:layout_marginEnd="5dp"
+        android:id="@+id/carouselView"
+        android:layout_width="match_parent"
+        android:layout_height="250dp"
+        app:fillColor="#FFFFFFFF"
+        app:pageColor="#00000000"
+        app:radius="6dp"
+        app:slideInterval="3000"
+        app:strokeColor="#FF777777"
+        app:strokeWidth="1dp"/>
+
+
+    <TextView
+        android:id="@+id/haveAccountText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="#000"
+        android:text="Mam już konto"
+        app:layout_constraintBottom_toTopOf="@+id/RegisterBtn"
+        app:layout_constraintStart_toStartOf="@id/RegisterBtn"
+        android:layout_marginBottom="10dp"
+        android:textSize="12sp"
+        app:layout_constraintEnd_toEndOf="@id/RegisterBtn"
+        />
+    <Button
+        android:alpha="0"
+        android:id="@+id/RegisterBtn"
+        android:layout_marginBottom="40dp"
+        android:layout_width="323dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_height="49dp"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/custom_button"
+        android:text="PRZEJDŹ DALEJ"
+        android:textColor="#FFFF"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+
+
+</layout>

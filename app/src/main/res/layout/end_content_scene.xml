@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <EditText
+        android:id="@+id/nameEditText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="50dp"
+        android:background="@drawable/custom_edittext"
+        android:drawableStart="@drawable/custom_icon_for_edittext"
+        android:drawablePadding="12dp"
+        android:hint="Jak się wabi?"
+        android:padding="12dp"
+        android:textCursorDrawable="@drawable/cursor_color"
+        android:textSize="18sp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <RatingBar
+        android:id="@+id/healthRatingBar"
+        style="@style/customRatingBarStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:numStars="10"
+        android:paddingVertical="10dp"
+        android:progress="50"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/nameEditText" />
+
+    <Spinner
+        android:id="@+id/characterSpinner"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="40dp"
+        android:layout_marginTop="10dp"
+        android:paddingHorizontal="40dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/healthRatingBar" />
+
+    <Spinner
+        android:id="@+id/behaviorSpinner"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="40dp"
+        android:layout_marginTop="15dp"
+        android:paddingHorizontal="40dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/characterSpinner" />
+
+    <EditText
+        android:id="@+id/descriptionEditText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="50dp"
+        android:layout_marginTop="10dp"
+        android:autofillHints=""
+        android:background="@drawable/custom_edittext"
+        android:drawableStart="@drawable/custom_icon_for_edittext"
+        android:drawablePadding="12dp"
+        android:gravity="top"
+        android:hint="Opis..."
+        android:inputType="text"
+        android:padding="12dp"
+        android:textCursorDrawable="@drawable/cursor_color"
+        android:textSize="18sp"
+
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/behaviorSpinner" />
+
+    <ImageButton
+        android:id="@+id/addAdvertisementButton"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/circle_button"
+        android:contentDescription="TODO"
+        android:gravity="center"
+        android:src="@drawable/ic_arrow_right"
+        android:textColor="@android:color/white"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/descriptionEditText" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

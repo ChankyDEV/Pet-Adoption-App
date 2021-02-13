@@ -1,0 +1,3 @@
+include ':heresdk'
+include ':app'
+rootProject.name = "AplikacjaAdopcyjna"

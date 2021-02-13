@@ -1,0 +1,6 @@
+configurations.maybeCreate("default")
+
+dependencies {
+    
+}
+artifacts.add("default", file('heresdk-lite-android-4.5.1.0.3221.aar'))

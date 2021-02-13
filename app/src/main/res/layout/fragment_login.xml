@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+<androidx.constraintlayout.widget.ConstraintLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".fragments.loginAndRegister.LoginFragment">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="30dp"
+        android:text="LOGOWANIE"
+        android:textSize="30dp"
+        android:id="@+id/login"
+        android:textColor="#000000"/>
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:id="@+id/image"
+        app:layout_constraintHorizontal_bias="0.3"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="47dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:src="@drawable/ic_yo2sejagwk"/>
+
+    <EditText
+        android:id="@+id/passwordTxtView"
+        android:layout_width="323dp"
+        android:textSize="18sp"
+        android:layout_height="40dp"
+        android:layout_marginTop="8dp"
+        android:ems="10"
+        android:hint="Hasło"
+        android:inputType="textPassword"
+        app:layout_constraintEnd_toEndOf="@+id/emailLoginTxtView"
+        app:layout_constraintStart_toStartOf="@+id/emailLoginTxtView"
+        app:layout_constraintTop_toBottomOf="@+id/emailLoginTxtView" />
+
+    <EditText
+        android:id="@+id/emailLoginTxtView"
+        android:layout_width="323dp"
+        android:layout_height="40dp"
+       android:layout_marginTop="50dp"
+        android:textSize="18sp"
+        android:ems="10"
+        android:hint="E-mail"
+        android:inputType="textEmailAddress"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+       app:layout_constraintTop_toBottomOf="@id/image" />
+
+    <TextView
+        android:id="@+id/registerTxtView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:clickable="true"
+        android:text="Nie masz jeszcze konta ?"
+        android:textColor="#000"
+        android:textSize="12sp"
+        app:layout_constraintBottom_toTopOf="@+id/loginBtn"
+        app:layout_constraintEnd_toEndOf="@+id/loginBtn"
+        app:layout_constraintStart_toStartOf="@+id/loginBtn" />
+
+    <Button
+        android:id="@+id/loginBtn"
+        android:layout_width="323dp"
+        android:layout_height="49dp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:background="@drawable/custom_button"
+        android:text="Zaloguj"
+        android:textColor="#FFFF"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginBottom="40dp"
+         />
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

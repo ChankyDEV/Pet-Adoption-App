@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        >
+
+        <com.yuyakaido.android.cardstackview.CardStackView
+            android:layout_marginHorizontal="5dp"
+            android:transitionGroup="true"
+            android:layout_marginBottom="40dp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:id="@+id/recycler"/>
+
+        <ImageButton
+            android:id="@+id/userButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            android:src="@drawable/ic_account_circle"
+            android:padding="10dp"
+            android:background="@android:color/transparent"
+            />
+
+        <ImageButton
+            android:id="@+id/likeButton"
+            android:background="@drawable/custom_circle_button"
+            android:backgroundTint="@color/smoked_green"
+            android:src="@drawable/ic_check"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintLeft_toRightOf="@+id/dislikeButton"
+            android:layout_marginBottom="10dp"
+            />
+
+        <ImageButton
+            android:id="@+id/dislikeButton"
+            android:background="@drawable/custom_circle_button"
+            android:backgroundTint="@android:color/holo_red_light"
+            android:src="@drawable/ic_cross"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toLeftOf="@+id/likeButton"
+            android:layout_marginBottom="10dp"
+            />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

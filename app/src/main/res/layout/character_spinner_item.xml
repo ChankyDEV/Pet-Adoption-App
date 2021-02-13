@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+    <data>
+        <variable
+            name="spinner"
+            type="com.example.rokpsia.models.SpinnerItem" />
+    </data>
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/CharacterSpinnerItem"
+        android:padding="20dp">
+
+        <TextView
+            android:id="@+id/spinnerItemText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:text="@{spinner.featureName}"
+            android:textSize="20sp"
+            android:textColor="@android:color/black"
+            android:layout_alignBottom="@+id/RatingBar"
+            />
+
+        <RatingBar
+            android:id="@+id/RatingBar"
+            style="@style/customSpinnerRatingBarStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_toEndOf="@+id/spinnerItemText"
+            android:rating="@{spinner.rate}"
+            android:numStars="5"
+            />
+    </RelativeLayout>
+</layout>

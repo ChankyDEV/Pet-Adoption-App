@@ -1,0 +1,64 @@
+Index: app/src/main/java/com/example/rokpsia/repository/PetRepository.kt
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.example.rokpsia.repository\r\n\r\nimport android.util.Log\r\nimport com.example.rokpsia.db.FavPetsDao\r\nimport com.example.rokpsia.fragments.loginAndRegister.LoginFragment\r\nimport com.example.rokpsia.fragments.loginAndRegister.RegisterFragment\r\nimport com.example.rokpsia.models.Pet\r\nimport com.example.rokpsia.models.TempPet\r\nimport com.example.rokpsia.models.User\r\nimport com.example.rokpsia.utils.LocationProvider\r\nimport com.google.firebase.auth.FirebaseAuth\r\nimport com.google.firebase.firestore.FirebaseFirestore\r\nimport kotlinx.coroutines.flow.Flow\r\nimport kotlinx.coroutines.tasks.await\r\nimport kotlin.coroutines.resume\r\nimport kotlin.coroutines.suspendCoroutine\r\n\r\nclass PetRepository(private val locationProvider: LocationProvider,private val favPetsDao: FavPetsDao) {\r\n\r\n\r\n    private val fireStore = FirebaseFirestore.getInstance()\r\n    private val auth = FirebaseAuth.getInstance()\r\n    private val users = fireStore.collection(\"users\")\r\n    private val pets = fireStore.collection(\"pets\")\r\n\r\n    suspend fun getPets():MutableList<TempPet> = suspendCoroutine { cont ->\r\n            fireStore.collection(\"temporary\").get().addOnSuccessListener {\r\n              cont.resume (it.toObjects(TempPet::class.java))\r\n            }.addOnFailureListener { Log.d(\"1\", \"getPets: FAILURE $it\") }\r\n    }\r\n\r\n    suspend fun addUser(user: User){\r\n        val id = auth.uid?:return\r\n        user.id=id\r\n        users.add(user).await()\r\n    }\r\n\r\n    suspend fun addPet(pet: Pet){\r\n\r\n        pets.add(pet).await()\r\n    }\r\n\r\n    fun register(email: String, password: String, username: String){\r\n\r\n        var register = RegisterFragment()\r\n\r\n        auth.createUserWithEmailAndPassword(email, password)\r\n            .addOnSuccessListener{\r\n                val user = auth.currentUser\r\n\r\n                addUserData(username, email)\r\n\r\n            }.addOnFailureListener{\r\n                register.updateUI(null)\r\n            }\r\n    }\r\n\r\n    fun login(email:String,password:String) {\r\n\r\n        var login = LoginFragment()\r\n\r\n        auth.signInWithEmailAndPassword(email,password)\r\n            .addOnFailureListener {\r\n            val user = auth.currentUser\r\n            Log.d(\"udało się\", \"Udało się\")\r\n            login.updateUI(user)\r\n\r\n            }.addOnFailureListener {\r\n            login.updateUI(null)\r\n            Log.d(\"nie udało się\", \"logowanie nieudane\")\r\n            }\r\n    }\r\n\r\n\r\n    fun startLocationUpdates() = locationProvider.getStartLocation() //i to dalej trzeba impl\r\n\r\n    fun stopLocationUpdates() = locationProvider.getStopLocation()\r\n\r\n\r\n\r\n\r\n    private fun addUserData(username: String, email: String) {\r\n        var newUser = User(null, username,\"\", email,\"\",\r\n            null,null,null,null,null,null)\r\n\r\n       fireStore.collection(\"users\")\r\n           .add(newUser)\r\n           .addOnSuccessListener {\r\n               Log.d(\"Powodzenie\", \"Udało się dodać użytkownika\")\r\n           }.addOnFailureListener {\r\n               Log.d(\"Niepowodzenie\", \"Nie udało się dodać użytkownika\")\r\n           }\r\n    }\r\n\r\n    private fun addPetData(){\r\n\r\n    }\r\n\r\n    fun FetchFavouritesForCurrentUser(user:User): Flow<List<Pet>> {\r\n\r\n        return favPetsDao.getFavPets()\r\n    }\r\n\r\n\r\n\r\n\r\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/java/com/example/rokpsia/repository/PetRepository.kt	(revision a936271f73a45c3e07001c326ddeb98c19ee3847)
++++ app/src/main/java/com/example/rokpsia/repository/PetRepository.kt	(date 1605372993792)
+@@ -40,19 +40,22 @@
+         pets.add(pet).await()
+     }
+ 
+-    fun register(email: String, password: String, username: String){
++    fun register(email: String, password: String, username: String):Boolean{
+ 
+-        var register = RegisterFragment()
+-
++        //var register = RegisterFragment()
++        var isRegisterSuccess=false
+         auth.createUserWithEmailAndPassword(email, password)
+             .addOnSuccessListener{
+                 val user = auth.currentUser
+ 
+                 addUserData(username, email)
++                isRegisterSuccess=true
+ 
+             }.addOnFailureListener{
+-                register.updateUI(null)
++               // register.updateUI(null)
++                isRegisterSuccess=false
+             }
++        return isRegisterSuccess
+     }
+ 
+     fun login(email:String,password:String) {
+Index: app/src/main/java/com/example/rokpsia/fragments/loginAndRegister/RegisterFragment.kt
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.example.rokpsia.fragments.loginAndRegister\r\n\r\nimport android.os.Bundle\r\nimport android.util.Patterns\r\nimport androidx.fragment.app.Fragment\r\nimport android.view.LayoutInflater\r\nimport android.view.View\r\nimport android.view.ViewGroup\r\nimport android.widget.Toast\r\nimport androidx.fragment.app.viewModels\r\nimport androidx.navigation.NavController\r\nimport androidx.navigation.Navigation\r\nimport com.example.rokpsia.R\r\nimport com.example.rokpsia.databinding.FragmentRegisterBinding\r\nimport com.example.rokpsia.utils.Helper\r\nimport com.example.rokpsia.viewModel.registerAndLogin.RegisterViewModel\r\nimport com.example.rokpsia.viewModel.registerAndLogin.RegisterViewModelFactory\r\nimport com.google.firebase.auth.FirebaseAuth\r\nimport com.google.firebase.auth.FirebaseUser\r\nimport com.google.firebase.auth.ktx.auth\r\nimport com.google.firebase.ktx.Firebase\r\nimport kotlinx.android.synthetic.main.fragment_register.*\r\n\r\n\r\nclass RegisterFragment : Fragment(),View.OnClickListener {\r\n\r\n    private val viewModel: RegisterViewModel by viewModels { RegisterViewModelFactory(Helper.provideRepository(requireContext())) }\r\n\r\n    private lateinit var binding: FragmentRegisterBinding\r\n    lateinit var navController: NavController;\r\n\r\n    private lateinit var auth: FirebaseAuth\r\n\r\n    override fun onCreateView(\r\n        inflater: LayoutInflater, container: ViewGroup?,\r\n        savedInstanceState: Bundle?\r\n    ): View? {\r\n        binding = FragmentRegisterBinding.inflate(inflater,container,false)\r\n        binding.RegisterBtn.setOnClickListener(this)\r\n        binding.haveAccountText.setOnClickListener(this)\r\n\r\n        return binding.root\r\n    }\r\n\r\n    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {\r\n        super.onViewCreated(view, savedInstanceState)\r\n        //Stworzenie instancji autoryzacji\r\n        auth = Firebase.auth\r\n        //Stworzenie kontrolera nawigacji przy stworeniu pierwszego widoku\r\n        navController = Navigation.findNavController(view)\r\n    }\r\n\r\n    public override fun onStart() {\r\n        super.onStart()\r\n        // Check if user is signed in (non-null) and update UI accordingly.\r\n        val currentUser = auth.currentUser\r\n\r\n    }\r\n\r\n    private fun checkRegisterData() : Boolean {\r\n        if(userNameText.text.isEmpty()){\r\n            userNameText.error = \"Nie podano nazwy użytkownika\"\r\n            userNameText.requestFocus()\r\n            return false\r\n\r\n        }else if(emailTxtView.text.isEmpty()) {\r\n            emailTxtView.error = \"Nie podano adresu e-mail\"\r\n            emailTxtView.requestFocus()\r\n            return false\r\n\r\n        }else if(!Patterns.EMAIL_ADDRESS.matcher(emailTxtView.text.toString()).matches()){\r\n            emailTxtView.error = \"Nieprawidłowy adres e-mail\"\r\n            emailTxtView.requestFocus()\r\n            return false\r\n\r\n        }else if (binding.passwordTxtView.text.isEmpty()){\r\n            binding.passwordTxtView.error = \"Nie podano hasła\"\r\n            binding.passwordTxtView.requestFocus()\r\n            return false\r\n\r\n        }else if(binding.passwordTxtView.text.length <= 6) {\r\n            binding.passwordTxtView.error = \"Hasło musi zawierać 6 lub więcej znaków\"\r\n            binding.passwordTxtView.requestFocus()\r\n            return false\r\n\r\n        }else if (binding.passwordTxtView.text.toString() != passwordTxtView2.text.toString()){\r\n            passwordTxtView2.error = \"Hasła nie są takie same\"\r\n            passwordTxtView2.requestFocus()\r\n            return false\r\n\r\n        }else\r\n            return true\r\n    }\r\n\r\n    private fun doRegister(){\r\n        if (checkRegisterData()) {\r\n            viewModel.register(\r\n                binding.emailTxtView.text.toString(),\r\n                binding.passwordTxtView.text.toString(),\r\n                binding.userNameText.text.toString()\r\n            )\r\n        }\r\n    }\r\n\r\n    fun updateUI(currentUser: FirebaseUser?) {\r\n        if(currentUser != null){\r\n            navController.navigate(R.id.action_registerFragment_to_loginFragment)\r\n        }else if(currentUser == null){\r\n            Toast.makeText(context, \"Rejestracja niepowiodła się\", Toast.LENGTH_LONG).show()\r\n        }\r\n    }\r\n\r\n    override fun onClick(v: View?) {\r\n        when(v!!.id) {\r\n            R.id.RegisterBtn -> {\r\n                doRegister()\r\n            }\r\n            R.id.haveAccountText ->{\r\n                navController.navigate(R.id.action_registerFragment_to_loginFragment)\r\n            }\r\n        }\r\n    }\r\n\r\n\r\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/java/com/example/rokpsia/fragments/loginAndRegister/RegisterFragment.kt	(revision a936271f73a45c3e07001c326ddeb98c19ee3847)
++++ app/src/main/java/com/example/rokpsia/fragments/loginAndRegister/RegisterFragment.kt	(date 1605373162028)
+@@ -94,11 +94,13 @@
+ 
+     private fun doRegister(){
+         if (checkRegisterData()) {
+-            viewModel.register(
+-                binding.emailTxtView.text.toString(),
+-                binding.passwordTxtView.text.toString(),
+-                binding.userNameText.text.toString()
+-            )
++            if(viewModel.register(binding.emailTxtView.text.toString(), binding.passwordTxtView.text.toString(), binding.userNameText.text.toString())){
++                Toast.makeText(context, "Rejestracja powiodła się", Toast.LENGTH_LONG).show()
++            }
++            else
++            {
++                Toast.makeText(context, "Rejestracja niepowiodła się", Toast.LENGTH_LONG).show()
++            }
+         }
+     }
+ 
